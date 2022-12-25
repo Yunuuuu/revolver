@@ -122,11 +122,11 @@ plot_clusters = function(x,
     arrange(cluster) %>% 
     pull(patientID)
   
-  # if(any(cl_ordering != factors_patient_level))
-  # {
-  #   warning("Dendrogram ordering does not reflect clustering - strange behaviour of the cutting algorithms?")
-  #   # factors_patient_level = cl_ordering
-  # }
+  if(any(cl_ordering != factors_patient_level))
+  {
+    warning("Dendrogram ordering does not reflect clustering - strange behaviour of the cutting algorithms?")
+    factors_patient_level = cl_ordering
+  }
 
   # Get colors for the clusters
   clusters_colors = get_cluster_colors(x, cluster_palette)
